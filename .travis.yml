@@ -13,4 +13,4 @@ matrix:
     - ls ./node_modules
     - yarn lint
     - yarn add coveralls
-    - yarn test | coveralls
+    - yarn test --coverage --coverageReporters=text-lcov | coveralls
