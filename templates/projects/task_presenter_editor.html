@@ -524,25 +524,23 @@ function updateExpandButton(e) {
     var text = e ? e.currentTarget.textContent : $('.nav-tabs li[role="presentation"].active a').text();
     var isTaskPresenterTab = text === 'Task Presenter';
 
-    // Set the label for the show/hide button.
+    // Configure the labels and icons for the tabs.
     var showToolkitLabel = isTaskPresenterTab ? 'Show Toolkit' : 'Show Menu';
     var hideToolkitLabel = isTaskPresenterTab ? 'Hide Toolkit' : 'Hide Menu';
-    var showBuilderLabel = isTaskPresenterTab ? showToolkitLabel : hideToolkitLabel;
-    var hideBuilderLabel = isTaskPresenterTab ? hideToolkitLabel : showToolkitLabel;
-
-    // Update the label on the show/hide button.
-    $('li.show-builder .builder-tab-text').text(showBuilderLabel);
-    $('li.hide-builder .builder-tab-text').text(hideBuilderLabel);
-
-    // Set the icon on the show/hide button. For Instructions and Task Presenter tabs the icon is reversed.
-    var showIcon = $('li.show-builder .builder-tab-icon').removeClass('fa-plus-square-o fa-minus-square-o');
-    var hideIcon = $('li.hide-builder .builder-tab-icon').removeClass('fa-plus-square-o fa-minus-square-o');
     var showToolkitIcon = isTaskPresenterTab ? 'fa-wrench' : 'fa-minus-square-o';
     var hideToolkitIcon = isTaskPresenterTab ? 'fa-minus-square-o' : 'fa-plus-square-o';
 
+    // Update the label for the show/hide button, depending on the active tab.
+    var showBuilderLabel = isTaskPresenterTab ? showToolkitLabel : hideToolkitLabel;
+    var hideBuilderLabel = isTaskPresenterTab ? hideToolkitLabel : showToolkitLabel;
+    $('li.show-builder .builder-tab-text').text(showBuilderLabel);
+    $('li.hide-builder .builder-tab-text').text(hideBuilderLabel);
+
     // Update the icon on the show/hide button.
-    showIcon.addClass(showToolkitIcon);
-    hideIcon.addClass(hideToolkitIcon);
+    var showBuilderIcon = $('li.show-builder .builder-tab-icon').removeClass('fa-plus-square-o fa-minus-square-o');
+    var hideBuilderIcon = $('li.hide-builder .builder-tab-icon').removeClass('fa-plus-square-o fa-minus-square-o');
+    showBuilderIcon.addClass(showToolkitIcon);
+    hideBuilderIcon.addClass(hideToolkitIcon);
 }
 
 $('.nav-tabs li[role="presentation"]').click(function(e) { updateExpandButton(e); });
