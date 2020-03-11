@@ -14,7 +14,14 @@
       <p>{{ render_checkbox_field(form.do_not_validate_tp) }}</p>
       </span>
       <div class="form-actions">
-         <input type="file" name="file" accept=".csv"><br/><br/>
+         <input type="file" name="file" accept=".csv">
+         <br/>
+
+         {% if config.DATA_ACCESS_MESSAGE %}
+             <p>{{ config.DATA_ACCESS_MESSAGE|replace('SHORT_NAME', project.short_name)|safe }}</p>
+         {% endif %}
+
+         <br/>
          <input id="submit" type="submit" value="{{_('Import')}}" class="btn btn-primary" >
       </div>
    </fieldset>
