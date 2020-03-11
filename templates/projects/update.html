@@ -49,7 +49,7 @@
         {{ render_field(form.password, class_="password", placeholder="Leave blank to maintain set password") }}
         <div id="password-requirements">{{ form.password.render_kw.placeholder }}</div>
         {% if 'data_access' in form %}
-            <a name="data-access"></a>{{ render_select2_field(form.data_access, config.DATA_ACCESS_MESSAGE.replace('SHORT_NAME', project.short_name)) }}
+            <a name="data-access"></a>{{ render_select2_field(form.data_access, config.DATA_ACCESS_MESSAGE.replace('SHORT_NAME', project.short_name) if config.DATA_ACCESS_MESSAGE else None) }}
         {% endif %}
         {{ render_field(form.webhook) }}
         <div class="form-actions">
