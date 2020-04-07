@@ -10,22 +10,21 @@
 
 #contact-container {
   .header {
+    display: flex;
     margin-bottom: 10px;
 
-    a.btn-circle {
+    .col-md-1 {
+      min-width: 75px;
+    }
+
+    span.btn-circle {
       padding-left: 14px;
+      cursor: default;
     }
 
     .text {
-      padding-left: 28px;
-
-      .open-text {
-        padding-top: 2px;
-      }
-
-      .close-text {
-        padding-top: 10px;
-      }
+      padding-left: 0;
+      padding-top: 10px;
     }
   }
 }

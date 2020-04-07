@@ -497,21 +497,21 @@
         <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title" id="contact-modal-label">Contact Us About: {{ project.name }}</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
+            <h4 class="modal-title" id="contact-modal-label">Contact Us About: {{ project.name }}</h4>
           </div>
           <div class="modal-body">
             <div class="row header">
                 <div class="col col-md-1">
                     <span class="stepwizard-step">
-                        <a role="button" href="#" class="btn btn-circle btn-lg btn-border step-done"><i aria-hidden="false" class="fa fa-envelope-o icon-white"></i></a>
+                        <span class="btn btn-circle btn-lg btn-border step-done"><i aria-hidden="false" class="fa fa-envelope-o icon-white"></i></span>
                     </span>
                 </div>
                 <div class="col col-md-11 text">
                     <div class="open-text">
-                        If you have a question or comment about the current project, please include your message below and we'll contact you shortly. Thank you.
+                        Please include your message below and we'll contact you shortly. Thank you.
                     </div>
                     <div class="close-text hide">
                         Thank you. Your message has been sent.
@@ -527,7 +527,7 @@
                     </div>
                     <div class="form-group">
                         <label for="message">Message</label>
-                        <textarea class="form-control" id="message" rows="3"></textarea>
+                        <textarea class="form-control" id="txtMessage" rows="3"></textarea>
                     </div>
                 </form>
             </div>
@@ -557,12 +557,14 @@
                 totalTaskRuns: {{ num_expected_task_runs or 0 }},
                 remainingTasksRuns: {{ num_remaining_task_runs or 0 }},
                 tasksAvailableUser: {{ n_available_tasks_for_user or 0 }},
-                tasksCompletedUser: {{ n_completed_tasks_by_user or 0 }}
+                tasksCompletedUser: {{ n_completed_tasks_by_user or 0 }},
+                email: $('#txtEmail').val(),
+                message: $('#txtMessage').val()
             };
 
             $.ajax({
                 type: 'POST',
-                url: '/api/project/{{ project.short_name }}/contact',
+                url: '/api/projects/{{ project.short_name }}/contact',
                 dataType: 'json',
                 contentType: 'application/json',
                 data: JSON.stringify({ message: payload }),
