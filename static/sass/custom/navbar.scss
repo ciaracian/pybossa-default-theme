@@ -3,3 +3,29 @@
   color: #f0f0f0;
   margin: -20px 0 0 50px;
 }
+
+.navbar-default .navbar-nav>li>a.no-focus:focus {
+  color: white;
+}
+
+#contact-container {
+  .header {
+    margin-bottom: 10px;
+
+    a.btn-circle {
+      padding-left: 14px;
+    }
+
+    .text {
+      padding-left: 28px;
+
+      .open-text {
+        padding-top: 2px;
+      }
+
+      .close-text {
+        padding-top: 10px;
+      }
+    }
+  }
+}
