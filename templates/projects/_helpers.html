@@ -565,10 +565,11 @@
 
             function displayError(text, err) {
                 var container = $('#contact-container');
-                var errorDiv = container.find('.modal-footer .error');
 
+                var errorDiv = container.find('.modal-footer .error');
                 errorDiv.removeClass('hide');
                 text && errorDiv.text(text);
+
                 err && console.log(err);
             }
 
@@ -584,17 +585,22 @@
                         if (response.success) {
                             var container = $('#contact-container');
                             container.find('.body').hide();
-                            container.find('.header .open-text').addClass('hide');
-                            container.find('.header .close-text').removeClass('hide');
-                            container.find('.modal-footer .btn-open').addClass('hide');
-                            container.find('.modal-footer .btn-close').removeClass('hide');
+
+                            var header = container.find('.header');
+                            header.find('.open-text').addClass('hide');
+                            header.find('.close-text').removeClass('hide');
+
+                            var footer = container.find('.modal-footer');
+                            footer.find('.btn-open').addClass('hide');
+                            footer.find('.btn-close').removeClass('hide');
+                            footer.find('.error').addClass('hide');
                         }
                         else {
-                            displayError(null, response);
+                            displayError('There was a problem sending your message. Please try again.', response);
                         }
                     },
                     error: function(err, data) {
-                        displayError(null, err);
+                        displayError('There was a problem sending your message. Please try again.', err);
                     }
                 });
             }
