@@ -1,4 +1,5 @@
 {% import "projects/_helpers.html" as helper %}
+{% import "projects/project_contact.html" as project_contact %}
 
 <div class="navbar navbar-default navbar-fixed-top">
     <div class="navbar-inner" style="min-height:100px;">
@@ -57,7 +58,7 @@
     </div>
 </div>
 {% if project and ('all' in config.CONTACT_ENABLE or project.short_name in config.CONTACT_ENABLE) %}
-    {{ helper.contact(owner, current_user, project, n_tasks, num_expected_task_runs, num_remaining_task_runs, n_available_tasks_for_user, n_completed_tasks_by_user) }}
+    {{ project_contact.render(owner, current_user, project, n_tasks, num_expected_task_runs, num_remaining_task_runs, n_available_tasks_for_user, n_completed_tasks_by_user) }}
 {% endif %}
 <style>
 .env-name{
