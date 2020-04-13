@@ -28,6 +28,11 @@
     }
   }
 
+  .modal-body {
+      position: relative;
+      padding: 20px;
+  }
+
   .modal-footer {
     .text-danger {
       margin-top: 10px;
